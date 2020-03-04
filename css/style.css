@@ -5,7 +5,7 @@
 }
 
 /* SCROLLBAR */
-.contacts-list-box::-webkit-scrollbar, .main-section::-webkit-scrollbar {
+*::-webkit-scrollbar {
     /*chrome - safari*/
     display: none;
 }

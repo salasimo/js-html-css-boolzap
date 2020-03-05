@@ -359,3 +359,18 @@ div[class*=-bubble]{
     font-size: 11px;
     color: grey;
 }
+i.fas.fa-microphone{
+    display: none;
+}
+
+i.fas.fa-microphone.active{
+    display: block;
+}
+
+i.fas.fa-paper-plane{
+    display: none;
+}
+
+i.fas.fa-paper-plane.active{
+    display:block;
+}

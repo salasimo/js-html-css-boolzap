@@ -36,7 +36,7 @@
                     </div>
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Cerca un messaggio">
+                        <input class="search-contacts" type="text" placeholder="Cerca un contatto">
                     </div>
                     <div class="contacts-list-box">
                         <div class="contact">
@@ -203,7 +203,10 @@
                     <div class="message-bar">
                         <div class="emoji"><i class="far fa-laugh"></i></div>
                         <input type="text" class="message-field-text">
-                        <div class="send-rec enter-send"><i class="fas fa-microphone"></i></div>
+                        <div class="send-rec enter-send">
+                            <i class="fas fa-microphone active"></i>
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,6 +216,15 @@
         <div class="template-message-sent">
             <div class="message-sent">
                 <div class="message-sent-bubble">
+                    <div class="message-content"></div>
+                    <div class="message-time"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Template messaggio ricevuto  -->
+        <div class="template-message-received">
+            <div class="message-received">
+                <div class="message-received-bubble">
                     <div class="message-content"></div>
                     <div class="message-time"></div>
                 </div>

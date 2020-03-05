@@ -1,29 +1,38 @@
-$(document).ready(function(){
-    // if $(".message-field-text").val() !=
-    $(".enter-send").click(newMessageSent);
-
-$(".search-contacts").keyup(function(event){
-    var charFilter = $(this).val().toLowerCase();
-    $(".contact-name").each(function(){
-        if ($(this).text().toLowerCase().includes(charFilter)){
-            $(this).parents(".contact").show();
-        } else{
-            $(this).parents(".contact").hide();
+$(document).ready(function() {
+    $(".message-field-text").keyup(function(event) {
+        if ($(".message-field-text").val() != "") {
+            $("i.fa-microphone").removeClass("active");
+            $(".fa-paper-plane").addClass("active");
+        } else {
+            $("i.fa-microphone").addClass("active");
+            $(".fa-paper-plane").removeClass("active");
         }
     });
-});
 
-// ========= FUNZIONI =======================
+    $(".enter-send").click(newMessageSent);
+
+    $(".search-contacts").keyup(function(event) {
+        var charFilter = $(this).val().toLowerCase();
+        $(".contact-name").each(function() {
+            if ($(this).text().toLowerCase().includes(charFilter)) {
+                $(this).parents(".contact").show();
+            } else {
+                $(this).parents(".contact").hide();
+            }
+        });
+    });
+
+    // ========= FUNZIONI =======================
 
     function addZero(i) {
-      if (i < 10) {
-        i = "0" + i;
-      }
-      return i;
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
     };
 
 
-    function newMessageSent(){
+    function newMessageSent() {
         var input = $(".message-field-text").val();
         $(".message-field-text").val("");
         var time = new Date();
@@ -36,7 +45,7 @@ $(".search-contacts").keyup(function(event){
         setTimeout(returnOk, 1000);
     };
 
-    function returnOk(){
+    function returnOk() {
         var time = new Date();
         var messageTime = addZero(time.getHours(addZero)) + ":" + addZero(time.getMinutes());
         var messageOk = $(".template-message-received .message-received").clone();

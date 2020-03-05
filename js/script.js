@@ -1,15 +1,20 @@
 $(document).ready(function() {
     $(".message-field-text").keyup(function(event) {
         if ($(".message-field-text").val() != "") {
-            $("i.fa-microphone").removeClass("active");
-            $(".fa-paper-plane").addClass("active");
+            $("i.rec-audio-btn").removeClass("active");
+            $("i.send-message-btn").addClass("active");
         } else {
-            $("i.fa-microphone").addClass("active");
-            $(".fa-paper-plane").removeClass("active");
+            $("i.rec-audio-btn").addClass("active");
+            $("i.send-message-btn").removeClass("active");
         }
     });
 
     $(".enter-send").click(newMessageSent);
+    $(".message-field-text").keypress(function(event){
+        if (event.key == "Enter"){
+            newMessageSent();
+        }
+    });
 
     $(".search-contacts").keyup(function(event) {
         var charFilter = $(this).val().toLowerCase();

@@ -73,7 +73,6 @@ body {
 
 .main-section {
     height: calc(100% - 100px);
-    overflow: hidden;
     position: relative;
 }
 
@@ -359,18 +358,20 @@ div[class*=-bubble] {
     color: grey;
 }
 
-i.fas.fa-microphone {
+/* Tasto invio messaggio / rec */
+
+i.rec-audio-btn {
     display: none;
 }
 
-i.fas.fa-microphone.active {
+i.rec-audio-btn.active {
     display: block;
 }
 
-i.fas.fa-paper-plane {
+i.send-message-btn {
     display: none;
 }
 
-i.fas.fa-paper-plane.active {
+i.send-message-btn.active {
     display: block;
 }

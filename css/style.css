@@ -311,6 +311,14 @@ img.avatar-img {
     overflow-y: auto;
 }
 
+.template-message-sent{
+    display: none;
+}
+
+.template-message-received{
+    display: none;
+}
+
 .message-sent{
     display:flex;
     justify-content: flex-end;

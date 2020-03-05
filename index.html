@@ -6,6 +6,8 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/25aedb670a.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/script.js" charset="utf-8"></script>
         <title>Boolzapp</title>
     </head>
     <body>
@@ -43,7 +45,9 @@
                             </div>
                             <div class="contact-text">
                                 <div class="contact-name">Simone A.</div>
-                                <div class="message-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus odio repudiandae qui dolor libero fugit cumque sit in ratione vel, quod consequuntur blanditiis odit eligendi laborum illum, numquam dolore laudantium.</div>
+                                <div class="message-preview">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus odio repudiandae qui dolor libero fugit cumque sit in ratione vel, quod consequuntur blanditiis odit eligendi laborum illum, numquam dolore laudantium.
+                                </div>
                             </div>
                             <div class="time">16.43</div>
                         </div>
@@ -199,10 +203,21 @@
                     <div class="message-bar">
                         <div class="emoji"><i class="far fa-laugh"></i></div>
                         <input type="text" class="message-field-text">
-                        <div class="send-rec"><i class="fas fa-microphone"></i></div>
+                        <div class="send-rec enter-send"><i class="fas fa-microphone"></i></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Template messaggio inviato  -->
+        <div class="template-message-sent">
+            <div class="message-sent">
+                <div class="message-sent-bubble">
+                    <div class="message-content"></div>
+                    <div class="message-time"></div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

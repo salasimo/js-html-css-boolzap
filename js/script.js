@@ -1,35 +1,13 @@
 $(document).ready(function() {
-    $(".message-field-text").keyup(function(event) {
-        if ($(".message-field-text").val() != "") {
-            $("i.rec-audio-btn").removeClass("active");
-            $("i.send-message-btn").addClass("active");
-        } else {
-            $("i.rec-audio-btn").addClass("active");
-            $("i.send-message-btn").removeClass("active");
-        }
-    });
 
-    $(".send-message-btn").click(newMessageSent);
-    $(".message-field-text").keypress(function(event){
-        if ( (event.key == "Enter") && ($(".message-field-text").val() !== "") ){
-            newMessageSent();
-        }
-    });
-
-    $(".search-contacts").keyup(function(event) {
-        var charFilter = $(this).val().toLowerCase();
-        $(".contact-name").each(function() {
-            if ($(this).text().toLowerCase().includes(charFilter)) {
-                $(this).parents(".contact").show();
-            } else {
-                $(this).parents(".contact").hide();
-            }
-        });
-    });
+    $(".message-field-text").keyup(changeSendIcon); //Cambia l'icona REC/INVIA
+    $(".send-message-btn").click(newMessageSent); //Invia il messaggio al click (+ risposta "Ok")
+    $(".message-field-text").keypress(sendWithEnter); //Invia il messaggio (non vuoto) con Enter
+    $(".search-contacts").keyup(searchContact); //Trova i contatti usando il campo di ricerca
 
     // ========= FUNZIONI =======================
 
-    function addZero(i) {
+    function addZero(i) { //aggiunge lo "0" per formattare correttamente hh:mm
         if (i < 10) {
             i = "0" + i;
         }
@@ -37,7 +15,7 @@ $(document).ready(function() {
     };
 
 
-    function newMessageSent() {
+    function newMessageSent() { //invia il messaggio scritto con l'ora
         var input = $(".message-field-text").val();
         $(".message-field-text").val("");
         var time = new Date();
@@ -46,20 +24,56 @@ $(document).ready(function() {
         message.find(".message-content").text(input);
         message.find(".message-time").text(messageTime);
         $(".messages-box").append(message);
-        $(".main-section").scrollTop($(".main-section")[0].scrollHeight); // funziona solo al primo click! Why??!
-        setTimeout(returnOk, 1000);
+        $(".messages-box").animate({ scrollTop: 9999 }, "slow");
+        setTimeout(returnOk, 1000); //>>>>>>>>>>>> richiamo la funzione che risponde "Ok"
     };
 
-    function returnOk() {
+    function returnOk() { //risponde "Ok" ad ogni messaggio inviato, con l'ora
         var time = new Date();
         var messageTime = addZero(time.getHours(addZero)) + ":" + addZero(time.getMinutes());
         var messageOk = $(".template-message-received .message-received").clone();
         messageOk.find(".message-content").text("Ok");
         messageOk.find(".message-time").text(messageTime);
         $(".messages-box").append(messageOk);
-        $(".main-section").scrollTop($(".main-section")[0].scrollHeight); // funziona solo al primo click! Why??!
+        $(".messages-box").animate({ scrollTop: 9999 }, "slow");
+
     };
 
+    function changeSendIcon(event) { //cambia icona di rec/invio
+        if ($(".message-field-text").val() != "") {
+            $("i.rec-audio-btn").removeClass("active");
+            $("i.send-message-btn").addClass("active");
+        } else {
+            $("i.rec-audio-btn").addClass("active");
+            $("i.send-message-btn").removeClass("active");
+        }
+    };
+
+    function sendWithEnter(event){ //invia il messaggio con Enter
+        if ( (event.key == "Enter") && ($(".message-field-text").val() !== "") ){
+            newMessageSent();
+        }
+    };
+
+    function searchContact(event) { //cerca tra i contatti
+        var charFilter = $(this).val().toLowerCase();
+        $(".contact-name").each(function() {
+            if ($(this).text().toLowerCase().includes(charFilter)) {
+                $(this).parents(".contact").show();
+            } else {
+                $(this).parents(".contact").hide();
+            }
+        });
+    };
+
+    // function scrollDown(){
+    //     var scrollBottom = $(".messages-box").scrollTop() + $(".messages-box").height();
+    //     $(".messages-box").scroll(scrollBottom);
+    // };
 
 
-}); //chiusura document ready
+
+
+
+
+}); //chiusura document ready ==============================

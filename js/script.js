@@ -9,9 +9,9 @@ $(document).ready(function() {
         }
     });
 
-    $(".enter-send").click(newMessageSent);
+    $(".send-message-btn").click(newMessageSent);
     $(".message-field-text").keypress(function(event){
-        if (event.key == "Enter"){
+        if ( (event.key == "Enter") && ($(".message-field-text").val() !== "") ){
             newMessageSent();
         }
     });

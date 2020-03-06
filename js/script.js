@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $(".message-field-text").keyup(changeSendIcon); //Cambia l'icona REC/INVIA
-    $(".send-message-btn").click(newMessageSent); //Invia il messaggio al click (+ risposta "Ok")
+    $(".send-message-btn").click(sendNewMessage); //Invia il messaggio al click (+ risposta "Ok")
     $(".message-field-text").keypress(sendWithEnter); //Invia il messaggio (non vuoto) con Enter
     $(".search-contacts").keyup(searchContact); //Trova i contatti usando il campo di ricerca
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
     };
 
 
-    function newMessageSent() { //invia il messaggio scritto con l'ora
+    function sendNewMessage() { //invia il messaggio scritto con l'ora
         var input = $(".message-field-text").val();
         $(".message-field-text").val("");
         var time = new Date();
@@ -46,13 +46,13 @@ $(document).ready(function() {
         } else {
             $("i.rec-audio-btn").addClass("active");
             $("i.send-message-btn").removeClass("active");
-        }
+        };
     };
 
     function sendWithEnter(event){ //invia il messaggio con Enter
-        if ( (event.key == "Enter") && ($(".message-field-text").val() !== "") ){
-            newMessageSent();
-        }
+        if ( (event.key == "Enter") && ($(".message-field-text").val() != "") ){
+            sendNewMessage();
+        };
     };
 
     function searchContact(event) { //cerca tra i contatti
@@ -62,7 +62,7 @@ $(document).ready(function() {
                 $(this).parents(".contact").show();
             } else {
                 $(this).parents(".contact").hide();
-            }
+            };
         });
     };
 

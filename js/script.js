@@ -18,8 +18,7 @@ $(document).ready(function() {
     function sendNewMessage() { //invia il messaggio scritto con l'ora
         var input = $(".message-field-text").val();
         $(".message-field-text").val("");
-        var time = new Date();
-        var messageTime = addZero(time.getHours(addZero)) + ":" + addZero(time.getMinutes());
+        var messageTime = getMessageTime();
         var message = $(".template-message-sent .message-sent").clone();
         message.find(".message-content").text(input);
         message.find(".message-time").text(messageTime);
@@ -29,18 +28,16 @@ $(document).ready(function() {
     };
 
     function returnOk() { //risponde "Ok" ad ogni messaggio inviato, con l'ora
-        var time = new Date();
-        var messageTime = addZero(time.getHours(addZero)) + ":" + addZero(time.getMinutes());
+        var messageTime = getMessageTime();
         var messageOk = $(".template-message-received .message-received").clone();
         messageOk.find(".message-content").text("Ok");
         messageOk.find(".message-time").text(messageTime);
         $(".messages-box").append(messageOk);
         $(".messages-box").animate({ scrollTop: 9999 }, "slow");
-
     };
 
     function changeSendIcon(event) { //cambia icona di rec/invio
-        if ($(".message-field-text").val() != "") {
+        if ($(".message-field-text").val().trim() != "") {
             $("i.rec-audio-btn").removeClass("active");
             $("i.send-message-btn").addClass("active");
         } else {
@@ -50,7 +47,7 @@ $(document).ready(function() {
     };
 
     function sendWithEnter(event){ //invia il messaggio con Enter
-        if ( (event.key == "Enter") && ($(".message-field-text").val() != "") ){
+        if ( (event.key == "Enter") && ($(".message-field-text").val().trim() != "") ){
             sendNewMessage();
         };
     };
@@ -66,12 +63,11 @@ $(document).ready(function() {
         });
     };
 
-    // function scrollDown(){
-    //     var scrollBottom = $(".messages-box").scrollTop() + $(".messages-box").height();
-    //     $(".messages-box").scroll(scrollBottom);
-    // };
-
-
+    function getMessageTime(){ //genera l'orario di invio / ricezione messaggio
+        var time = new Date();
+        var messageTime = addZero(time.getHours(addZero)) + ":" + addZero(time.getMinutes());
+        return messageTime;
+    };
 
 
 

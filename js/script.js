@@ -5,7 +5,41 @@ $(document).ready(function() {
     $(".message-field-text").keypress(sendWithEnter); //Invia il messaggio (non vuoto) con Enter
     $(".search-contacts").keyup(searchContact); //Trova i contatti usando il campo di ricerca
 
-    // ========= FUNZIONI =======================
+    $('.contact').click(function() {
+
+        var name = $(this).find(".contact-name").text();
+        var avatar = $(this).find(".avatar-img").attr("src");
+
+        var userId = $(this).data('codiceUtente');
+
+        $(".open-settings").addClass("active");
+        $(".message-bar-content").addClass("active");
+
+        $(".contact").removeClass("active");
+        $(this).addClass("active");
+
+        $(".main-section .messages-box").each(function(){
+            if (userId == $(this).data('codiceUtente')) {
+                $(".main-section .messages-box").removeClass("active");
+                $(this).addClass("active");
+            }
+        });
+        $(".open-contact-bar-left").each(function(){
+            if (userId == $(this).data('codiceUtente')) {
+                $(".open-contact-bar-left").removeClass("active");
+                $(this).addClass("active");
+                $(this).find(".open-avatar img").attr("src", avatar);
+                $(this).find(".open-name").text(name);
+            }
+
+        });
+    });
+
+
+
+
+
+    // ========= FUNZIONI =================
 
     function addZero(i) { //aggiunge lo "0" per formattare correttamente hh:mm
         if (i < 10) {
@@ -23,7 +57,8 @@ $(document).ready(function() {
         message.find(".message-content").text(input);
         message.find(".message-time").text(messageTime);
         $(".messages-box").append(message);
-        $(".messages-box").animate({ scrollTop: 9999 }, "slow");
+        var scrollPixel = $(".messages-box").height();
+        $(".messages-box").scrollTop(scrollPixel);
         setTimeout(returnOk, 1000); //>>>>>>>>>>>> richiamo la funzione che risponde "Ok"
     };
 
@@ -33,7 +68,9 @@ $(document).ready(function() {
         messageOk.find(".message-content").text("Ok");
         messageOk.find(".message-time").text(messageTime);
         $(".messages-box").append(messageOk);
-        $(".messages-box").animate({ scrollTop: 9999 }, "slow");
+        var scrollPixel = $(".messages-box").height();
+        console.log(scrollPixel);
+        $(".messages-box").scrollTop(scrollPixel);
     };
 
     function changeSendIcon(event) { //cambia icona di rec/invio

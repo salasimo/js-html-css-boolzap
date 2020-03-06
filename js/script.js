@@ -5,7 +5,7 @@ $(document).ready(function() {
     $(".message-field-text").keypress(sendWithEnter); //Invia il messaggio (non vuoto) con Enter
     $(".search-contacts").keyup(searchContact); //Trova i contatti usando il campo di ricerca
 
-    $('.contact').click(function() {
+    $('.contact').click(function() { //Seleziona il contatto con cui chattare
 
         var name = $(this).find(".contact-name").text();
         var avatar = $(this).find(".avatar-img").attr("src");
@@ -56,10 +56,11 @@ $(document).ready(function() {
         var message = $(".template-message-sent .message-sent").clone();
         message.find(".message-content").text(input);
         message.find(".message-time").text(messageTime);
-        $(".messages-box").append(message);
-        var scrollPixel = $(".messages-box").height();
-        $(".messages-box").scrollTop(scrollPixel);
+        $(".messages-box.active").append(message);
+        var scrollPixel = $(".messages-box.active").prop('scrollHeight');
+        $(".messages-box.active").scrollTop(scrollPixel);
         setTimeout(returnOk, 1000); //>>>>>>>>>>>> richiamo la funzione che risponde "Ok"
+        console.log(scrollPixel);
     };
 
     function returnOk() { //risponde "Ok" ad ogni messaggio inviato, con l'ora
@@ -67,10 +68,9 @@ $(document).ready(function() {
         var messageOk = $(".template-message-received .message-received").clone();
         messageOk.find(".message-content").text("Ok");
         messageOk.find(".message-time").text(messageTime);
-        $(".messages-box").append(messageOk);
-        var scrollPixel = $(".messages-box").height();
-        console.log(scrollPixel);
-        $(".messages-box").scrollTop(scrollPixel);
+        $(".messages-box.active").append(messageOk);
+        var scrollPixel = $(".messages-box.active").prop('scrollHeight');
+        $(".messages-box,.active").scrollTop(scrollPixel);
     };
 
     function changeSendIcon(event) { //cambia icona di rec/invio

@@ -104,6 +104,7 @@ body {
 }
 
 .contact {
+    position: relative;
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -158,8 +159,9 @@ img.avatar-img {
 .time {
     font-size: 12px;
     color: #caccce;
-    position: relative;
-    bottom: 8px;
+    position: absolute;
+    top: 15px;
+    right:20px;
 }
 
 .notification-box {
@@ -214,7 +216,7 @@ img.avatar-img {
 .search-box input {
     border: none;
     box-shadow: none;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .search-box input[type=text] {
@@ -253,7 +255,7 @@ img.avatar-img {
     margin: 0 10px;
     border: none;
     box-shadow: none;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .message-bar input[type=text] {
@@ -394,4 +396,45 @@ div[class*=-bubble] {
 .message-time {
     font-size: 11px;
     color: grey;
+}
+
+/*INTRO LOGO ANIMATO */
+
+.intro-logo{
+    background-color: #00a093b3;
+    position: absolute;
+    top:0;
+    left:0;
+    text-align: center;
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.intro-logo.hidden{
+    display: none;
+}
+
+@keyframes pulse {
+    0%{transform: scale(0.85);}
+    100%{transform: scale(1);}
+}
+
+.intro-logo h1{
+    font-family: 'Permanent Marker';
+    font-size: 40px;
+    color: #FFFFFF;
+    animation: pulse 4s ease-in-out infinite alternate;
+}
+
+.intro-logo p{
+    color: #fff;
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 14px;
+    border-radius: 4px;
 }

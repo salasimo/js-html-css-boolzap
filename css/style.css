@@ -202,8 +202,13 @@ img.avatar-img {
 .settings {
     display: flex;
     justify-content: space-between;
-    flex-basis: 80px;
+    align-items: center;
+    flex-basis: 140px;
     color: #00a093;
+}
+
+.settings.dark{
+    flex-basis: 150px;
 }
 
 .search-box {
@@ -412,6 +417,7 @@ div[class*=-bubble] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    user-select: none;
 
 }
 
@@ -438,3 +444,197 @@ div[class*=-bubble] {
     font-size: 14px;
     border-radius: 4px;
 }
+
+
+i.dark, span.dark{
+    display: none;
+}
+
+.toggle-dark-light-box{
+    display: flex;
+    align-items: center;
+}
+
+/* Dark Mode
+==================
+===================
+================
+======================
+=================
+======================*/
+
+*.dark {
+    /*firefox*/
+    scrollbar-color: #003b36 #3c3e3c;
+}
+
+body.dark {
+    color: #fff;
+}
+
+.page-container.dark {
+    background-color: #3c3e3c;
+}
+
+.bgn-top-bar.dark {
+    background-color: #003b36;
+}
+
+.container div[class*=-bar].dark {
+    background-color: #2c2c2c;
+}
+
+
+
+.notification-box.dark {
+    background-color: #2a3d45;
+}
+
+.search-box.dark {
+    background-color: #2c2c2c;
+}
+
+.contacts-list-box.dark {
+    background-color: #2c2c2c;
+}
+
+.contact.dark {
+    background-color: #252525;
+    border-bottom: 0.5px solid #c2c5c6;
+}
+
+.contact.active.dark {
+    background-color: #414141;
+}
+
+.avatar.dark {
+    background-color: #003b36;
+}
+
+.profile-bar.dark {
+    border-right: 0.5px solid #363636;
+}
+
+.message-preview.dark {
+    color: #d3d5d6;
+}
+
+.time.dark {
+    color: #d3d5d6;
+}
+
+.snooze.dark {
+    background-color: #919191;
+}
+
+.snooze i.fas.dark {
+    color: #2a3d45;
+}
+
+.notification-text .line1.dark {
+    color: #d3d5d6;
+}
+
+.notification-text .line2.dark {
+    f color: #d3d5d6;
+}
+
+.settings.dark {
+    color: #2e5e5a;
+}
+
+.search-box input[type=text] {
+    color: grey;
+}
+
+.search-box i.fa-search {
+    color: lightgrey;
+}
+
+.message-bar input[type=text].dark {
+    color: grey;
+}
+
+.message-bar i.dark {
+    color: lightgrey;
+}
+
+.last-access.dark {
+    color: lightgrey;
+}
+
+.open-settings.dark {
+    color: lightgray;
+}
+
+.message-sent-bubble.dark {
+    background-color: #253f0f;
+}
+
+.message-received-bubble.dark {
+    background-color: #363636;
+}
+
+.message-time.dark {
+    color: lightgrey;
+}
+
+/*INTRO LOGO ANIMATO */
+.intro-logo.dark {
+    background-color: #003b36b3;
+}
+
+.intro-logo h1.dark {
+    color: #fff;
+}
+
+.intro-logo p.dark {
+    color: #fff;
+}
+
+
+/*===*/
+
+.toggle-dark-box{
+    display: none;
+
+}
+
+.toggle-dark-box.dark{
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.fa-bell-slash.dark, .fa-comment-alt.dark, .fas.fa-ellipsis-v.dark,
+.toggle-dark-box.dark span, .toggle-dark-box.dark i {
+    display: block;
+}
+
+.toggle-light-box{
+    display: flex;
+    align-items: center;
+}
+
+.toggle-light-box.light{
+    display: none;
+
+
+}
+
+.toggle-dark-box.dark span, .toggle-light-box span{
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 5px;
+    user-select: none;
+
+}
+
+.open-settings i.dark, .fa-laugh.dark{
+    display: block;
+}
+
+/* ============
+fine Dark Mode */

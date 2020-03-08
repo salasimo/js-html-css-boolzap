@@ -1,18 +1,10 @@
 $(document).ready(function() {
-    var randomMessages = ["La parte più difficile nella vita di un programmatore è quando si da la caccia ad un bug per una settimana, si trova il codice che genera il bug, si offende l'autore del codice ed infine ci si accorge di essere l'autore del codice maledetto.",
-        "Misurare i progressi della programmazione dalle linee di codice è come misurare i progressi nella costruzione di aerei dal loro peso.",
-        "Gli smanettoni erediteranno la terra.",
-        "Quando dici: 'Ho scritto un programma che manda in crash Windows', la gente ti guarda stupita e ti dice: 'Hey, ce l'ho nel sistema, gratis'",
-        "I bravi programmatori sanno cosa scrivere. I migliori sanno cosa riscrivere.",
-        "Un pessimo programmatore può creare due posti di lavoro all'anno.",
-        "Programmare è un atto innaturale.",
-        "Non è necessario essere pazzi per essere un webmaster (ma aiuta).",
-        "Se la modifica di un programmatore a un programma esistente funziona, probabilmente non era quello che voleva il cliente."]
     $(".message-field-text").keyup(changeSendIcon); //Cambia l'icona REC/INVIA
     $(".send-message-btn").click(sendNewMessage); //Invia il messaggio al click (+ risposta "Ok")
     $(".message-field-text").keypress(sendWithEnter); //Invia il messaggio (non vuoto) con Enter
     $(".search-contacts").keyup(searchContact); //Trova i contatti usando il campo di ricerca
-
+    $(".toggle-light-box").click(lightToDark); //Attiva dark mode
+    $(".toggle-dark-box").click(darkToLight); //Attiva light mode
     $('.contact').click(function() { //Seleziona il contatto con cui chattare
 
         var name = $(this).find(".contact-name").text();
@@ -44,6 +36,15 @@ $(document).ready(function() {
         });
     });
 
+    var randomMessages = ["La parte più difficile nella vita di un programmatore è quando si da la caccia ad un bug per una settimana, si trova il codice che genera il bug, si offende l'autore del codice ed infine ci si accorge di essere l'autore del codice maledetto.",
+            "Misurare i progressi della programmazione dalle linee di codice è come misurare i progressi nella costruzione di aerei dal loro peso.",
+            "Gli smanettoni erediteranno la terra.",
+            "Quando dici: 'Ho scritto un programma che manda in crash Windows', la gente ti guarda stupita e ti dice: 'Hey, ce l'ho nel sistema, gratis'",
+            "I bravi programmatori sanno cosa scrivere. I migliori sanno cosa riscrivere.",
+            "Un pessimo programmatore può creare due posti di lavoro all'anno.",
+            "Programmare è un atto innaturale.",
+            "Non è necessario essere pazzi per essere un webmaster (ma aiuta).",
+            "Se la modifica di un programmatore a un programma esistente funziona, probabilmente non era quello che voleva il cliente."]
 
 
 
@@ -117,6 +118,16 @@ $(document).ready(function() {
         var time = new Date();
         var messageTime = (addZero(time.getHours(addZero)) + ":" + addZero(time.getMinutes())).toString();
         return messageTime;
+    };
+
+    function lightToDark(){
+        $("*").addClass("dark");
+
+    };
+
+    function darkToLight(){
+        $("*").removeClass("dark");
+
     };
 
     function addZero(i) { //aggiunge lo "0" per formattare correttamente hh:mm

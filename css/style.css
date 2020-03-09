@@ -632,7 +632,7 @@ body.dark {
 
 }
 
-.open-settings i.dark, .fa-laugh.dark{
+.open-settings i.dark, .fa-laugh.dark, .search-box .fa-search.dark{
     display: block;
 }
 
